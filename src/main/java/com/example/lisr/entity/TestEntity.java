@@ -1,5 +1,11 @@
 package com.example.lisr.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+
+//使用 Lombok 简化代码
+@TableName("test")
+@Data
 public class TestEntity {
 
     protected Integer id ;
@@ -9,36 +15,4 @@ public class TestEntity {
     protected String firstName ;
 
     protected String lastName ;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getMagicId() {
-        return magicId;
-    }
-
-    public void setMagicId(String magicId) {
-        this.magicId = magicId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 }

@@ -32,12 +32,21 @@ public class SessionFactoryConfiguration {
     @Bean(name="sqlSessionFactory")
     public SqlSessionFactoryBean createSqlSessionFactoryBean() throws IOException {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+
+        // 设置mybatis configuration 扫描路径
         sqlSessionFactoryBean.setConfigLocation(new ClassPathResource(mybatisConfigFilePath));
+
+        // 添加mapper 扫描路径
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         String packageSearchPath = PathMatchingResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX+mapperPath;
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources(packageSearchPath));
+
+        // 设置dataSource
         sqlSessionFactoryBean.setDataSource(dataSouce);
+
+        // 设置typeAlias 包扫描路径
         sqlSessionFactoryBean.setTypeAliasesPackage(entityPackage);
+
         return sqlSessionFactoryBean;
     }
 }
